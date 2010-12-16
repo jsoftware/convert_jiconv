@@ -46,7 +46,7 @@ gbkc=. 1!:1 <p,'gbk.c'
 utf8c=. 1!:1 <p,'utf8.c'
 assert. utf8c -.@-: big5c
 assert. gbkc -.@-: big5c
-enc=. ''[IFUNIX{::'big5';''
+enc=. IFUNIX{::'big5';''
 assert. utf8c -: 1{:: (enc;'') jiconv big5c
 assert. gbkc -: 1{:: (enc;'gbk') jiconv big5c
 assert. big5c -: 1{:: ('';'big5') jiconv 1{:: (enc;'gbk') jiconv big5c
