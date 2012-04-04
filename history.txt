@@ -1,4 +1,7 @@
 convert/jiconv - change history
 
-== 1.0.0/1 ==
+== 1.0.0/2 ==
  * addon for j701
+
+== 1.0.3 ==
+ * UNAME android
