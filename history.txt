@@ -5,3 +5,6 @@ convert/jiconv - change history
 
 == 1.0.3 ==
  * UNAME android
+
+== 1.0.5 ==
+ * chg: update for j801
