@@ -14,4 +14,3 @@ history.txt
 )
 
 RELEASE=: 'j802'
-PLATFORMS=: 'linux win darwin android'
