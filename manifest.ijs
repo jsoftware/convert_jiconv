@@ -6,11 +6,11 @@ DESCRIPTION=: 0 : 0
 auto-detect and convert between different character encodings.
 )
 
-VERSION=: '1.0.7'
+VERSION=: '1.0.8'
 
 FILES=: 0 : 0
 jiconv.ijs
 history.txt
 )
 
-RELEASE=: 'j802'
+RELEASE=: 'j802 j803'
