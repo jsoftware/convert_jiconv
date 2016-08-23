@@ -7,7 +7,7 @@ NB.   from_encodings: space delimited of source encodings
 NB.   to_encodings:   target encoding
 NB.   text:           array of bytes (never wide characters) 
 NB.
-NB.   from_encodings = '' :  'UTF-8-BOM UCS-2-BOM UTF-8 GBK BIG5 LATIN1'
+NB.   from_encodings = '' :  'UTF-8-BOM UCS-2-BOM UTF-8 UTF-16 GBK BIG5 LATIN1'
 NB.   target_encoding = '' : 'UTF-8'
 NB.
 NB.   return:   encodng_detected ; array of bytes in target encoding (never wide characters)
@@ -23,7 +23,7 @@ cocurrent 'z'
 NB. =========================================================
 jiconv_win=: 4 : 0
 'encs to'=. x [ y=. ,y
-if. 0=#encs=. toupper deb encs do. encs=. 'UTF-8-BOM UCS-2-BOM UTF-8 GBK BIG5 LATIN1' end.
+if. 0=#encs=. toupper deb encs do. encs=. 'UTF-8-BOM UCS-2-BOM UTF-8 UTF-16 GBK BIG5 LATIN1' end.
 if. 0=#to=. toupper to do. to=. 'UTF-8' end.
 encs=. <;._1 ' ', toupper deb encs
 CP_UTF7=. 65000
@@ -84,7 +84,7 @@ enc;z
 NB. =========================================================
 jiconv_lnx=: 4 : 0
 'encs to'=. x [ y=. ,y
-if. 0=#encs=. toupper deb encs do. encs=. 'UTF-8-BOM UCS-2-BOM UTF-8 GBK BIG5 LATIN1' end.
+if. 0=#encs=. toupper deb encs do. encs=. 'UTF-8-BOM UCS-2-BOM UTF-8 UTF-16 GBK BIG5 LATIN1' end.
 if. 0=#to=. toupper to do. to=. 'UTF-8' end.
 
 encs=. <;._1 ' ', toupper deb encs
@@ -104,7 +104,7 @@ ict=. ''$pa+memr pa,0 1 4     NB. plus offset to data
 for_fm. encs do.
   y1=. y
   enc=. ,>fm
-  if. (0=2|#y1) *. ((255 254 { a.) -: 2 {. y1) *. fm e. 'UCS-2-BOM';'UCS2-BOM' do. enc=. _4}.enc [ y1=. 2}.y1
+  if. (0=2|#y1) *. ((255 254 { a.) -: 2 {. y1) *. fm e. 'UCS-2-BOM';'UCS2-BOM';'UTF-16' do. enc=. _4}.enc [ y1=. 2}.y1
   elseif. ((239 187 191 { a.) -: 3 {. y1) *. fm e. 'UTF-8-BOM';'UTF8-BOM' do. enc=. _4}.enc [ y1=. 3}.y1
   end.
   ple=. 15!:6 <'y1'             NB. pointer to local entry
