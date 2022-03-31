@@ -98,18 +98,14 @@ iconv_iconv=. (libiconv, ' iconv x x *x *x *x *x')&cd      NB. des **inbuf *inby
 iconv_close=. (libiconv, ' iconv_close > i x')&cd          NB. des
 
 ct=. (n3=. 4*#y)#{.a.
-ple=. 15!:6 <'ct'             NB. pointer to local entry
-pa=. memr ple,(IF64{4 8),1 4  NB. ptr to array
-ict=. ''$pa+memr pa,0 1 4     NB. plus offset to data
+ict=. 15!:14@<'ct'
 for_fm. encs do.
   y1=. y
   enc=. ,>fm
   if. (0=2|#y1) *. ((255 254 { a.) -: 2 {. y1) *. fm e. 'UCS-2-BOM';'UCS2-BOM';'UTF-16' do. enc=. _4}.enc [ y1=. 2}.y1
   elseif. ((239 187 191 { a.) -: 3 {. y1) *. fm e. 'UTF-8-BOM';'UTF8-BOM' do. enc=. _4}.enc [ y1=. 3}.y1
   end.
-  ple=. 15!:6 <'y1'             NB. pointer to local entry
-  pa=. memr ple,(IF64{4 8),1 4  NB. ptr to array
-  iy1=. ''$pa+memr pa,0 1 4     NB. plus offset to data
+  iy1=. 15!:14@<'y1'
   if. _1~: uconv=. iconv_open to;enc do.
     if. _1~: 0{:: urc=. iconv_iconv uconv;(,iy1);(,#y1);(,ict);(,n3) do.
       enc; (n3-{._1{::urc){.ct [ iconv_close <uconv return.

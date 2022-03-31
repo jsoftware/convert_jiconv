@@ -6,7 +6,7 @@ DESCRIPTION=: 0 : 0
 auto-detect and convert between different character encodings.
 )
 
-VERSION=: '1.0.13'
+VERSION=: '1.0.14'
 
 FILES=: 0 : 0
 jiconv.ijs

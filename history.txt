@@ -8,3 +8,6 @@ convert/jiconv - change history
 
 == 1.0.5 ==
  * chg: update for j801
+
+== 1.0.14 ==
+ * 15!:15< - 904 problems with 15!:6
